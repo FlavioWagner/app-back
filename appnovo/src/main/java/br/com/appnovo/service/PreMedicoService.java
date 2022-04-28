@@ -27,17 +27,13 @@ public class PreMedicoService {
 	}
 	
 	@Transactional
-	public PreMedicoDTO Insert(PreMedicoDTO dto) {
-		
-		
+	public PreMedicoDTO Insert(PreMedicoDTO dto) {	
 		PreMedico medico = new PreMedico(dto.getCategoria(), dto.getGenero(), dto.getIdEstado(), dto.getNacionalidade(), dto.getNascimento(),
 			                            dto.getNascimentoExterior(), dto.getNome(), dto.getRegistro(), dto.getRg(), dto.getRgExpedicao(), dto.getRgOrgao(),
 				                        dto.getTitulo(), dto.getTituloSecao(), dto.getTituloZona(), dto.getEstado(), dto.getEstadoCivil());
-		
+	
 		repositorio.save(medico);
-		
 		return new PreMedicoDTO(medico);
-
 	}
 	
 	
