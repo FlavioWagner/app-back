@@ -43,6 +43,16 @@ public class PreMedicoService {
 	}
 	
 	
+	public List<PreMedicoDTO> findByRegistro(String registro){
+		List<PreMedico> listaPreMedico = repositorio.findByRegistro(registro);	
+		return listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
+		
+	}
+	
+	
+	
+	
+	
 	
 
 }
