@@ -5,6 +5,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.appnovo.model.Estado;
+import br.com.appnovo.model.EstadoCivil;
 import br.com.appnovo.model.PreMedico;
 
 
@@ -30,7 +32,7 @@ public class PreMedicoDTO {
 	
 	public PreMedicoDTO(String categoria, String genero, Integer idEstado, String nacionalidade, Date nascimento,
 			Boolean nascimentoExterior, String nome, String registro, String rg, Date rgExpedicao, String rgOrgao,
-			String titulo, String tituloSecao, String tituloZona) {
+			String titulo, String tituloSecao, String tituloZona, Estado estado, EstadoCivil estadoCivil) {
 		this.categoria = categoria;
 		this.genero = genero;
 		this.idEstado = idEstado;
@@ -45,6 +47,8 @@ public class PreMedicoDTO {
 		this.titulo = titulo;
 		this.tituloSecao = tituloSecao;
 		this.tituloZona = tituloZona;
+		this.estado = estado;
+		this.estadoCivil = estadoCivil;
 	}
 
     public PreMedicoDTO(PreMedico preMedico) {
@@ -62,12 +66,34 @@ public class PreMedicoDTO {
 		this.titulo = preMedico.getTitulo();
 		this.tituloSecao = preMedico.getTituloSecao();
 		this.tituloZona = preMedico.getTituloZona();
+		this.estado = preMedico.getEstado();
+		this.estadoCivil = preMedico.getEstadoCivil();
     }
 	
 	
 	
 	
 	private String categoria;
+	public Estado estado;
+	public EstadoCivil estadoCivil; 
+	
+	
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 	public String getCategoria() {
 		return categoria;
 	}

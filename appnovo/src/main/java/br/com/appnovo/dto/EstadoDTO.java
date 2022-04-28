@@ -7,13 +7,11 @@ public class EstadoDTO {
 	private String nome;
 	
 	public EstadoDTO(String uf, String nome) {
-		super();
 		this.uf = uf;
 		this.nome = nome;
 	}
 	
 	public EstadoDTO(Estado estado) {
-		super();
 		this.uf = estado.getSigla();
 		this.nome = estado.getNome();
 	}	
