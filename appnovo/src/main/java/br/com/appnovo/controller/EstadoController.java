@@ -1,5 +1,6 @@
 package br.com.appnovo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +25,13 @@ public class EstadoController {
 	
 	@RequestMapping("/estados")
 	public List<EstadoDTO> ListEstados(){
-		return estadoRepository.findAll()
-				               .stream()
-				               .map(x -> new EstadoDTO(x))
-				               .collect(Collectors.toList());
+		try {
+			return estadoRepository.findAll()
+					               .stream()
+					               .map(x -> new EstadoDTO(x))
+					               .collect(Collectors.toList());
+		} catch (Exception e) {
+			return new ArrayList<EstadoDTO>();
+		}	
 	}
 }
