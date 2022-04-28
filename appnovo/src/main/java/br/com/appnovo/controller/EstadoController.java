@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.appnovo.dto.EstadoDTO;
@@ -14,6 +15,12 @@ import br.com.appnovo.repository.EstadoRepository;
 public class EstadoController {
 	@Autowired
 	EstadoRepository estadoRepository;
+	
+	@RequestMapping
+	@ResponseBody
+	public String Estados(){
+		return "ok";
+	}
 	
 	@RequestMapping("/estados")
 	public List<EstadoDTO> ListEstados(){
