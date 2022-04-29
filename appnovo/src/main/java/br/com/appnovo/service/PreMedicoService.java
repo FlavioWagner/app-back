@@ -47,13 +47,12 @@ public class PreMedicoService {
 	
 	public PreMedico findByRegistro(String registro){
 		Optional<PreMedico>preMedico = repositorio.findByRegistro(registro);	
-		
 		return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +registro + "Tipo: " + PreMedico.class.getName()));	
 		
-		
-		//return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + "Tipo: " + PreMedico.class.getName()));		
-		
 	}
+	
+	
+	
 	
 	
 	
