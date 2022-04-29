@@ -21,18 +21,17 @@ public class PreMedicoControllerv2 implements ICustomController<PreMedicoDTO, Lo
 
 	@Override
 	public ResponseEntity<List<PreMedicoDTO>> Listar() {
-	List<PreMedicoDTO> lista = preMedicoService.find();
-		return  ResponseEntity.ok().body(lista);
+		return  ResponseEntity.ok().body(preMedicoService.find());
 	}
 
 	@Override
 	public ResponseEntity<PreMedicoDTO> Item(Long id) {
-		return (ResponseEntity<PreMedicoDTO>) ResponseEntity.ok().body(new PreMedicoDTO(preMedicoService.findId(id)));
+		return  ResponseEntity.ok().body(new PreMedicoDTO(preMedicoService.findId(id)));
 	}
 
 	@Override
 	public ResponseEntity<PreMedicoDTO> Inserir(PreMedicoDTO item) {
-		return  ResponseEntity.ok().body( preMedicoService.Insert(item));
+		return  ResponseEntity.ok().body(preMedicoService.Insert(item));
 	}
 
 	@Override

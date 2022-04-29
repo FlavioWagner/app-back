@@ -52,6 +52,20 @@ public class PreMedicoService {
 	}
 	
 	
+	public PreMedicoDTO Atualizar(PreMedicoDTO dto) {
+		
+		PreMedico medico = repositorio.findById(dto.getid()).get();
+		
+		
+		
+		
+		//listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
+		
+		repositorio.save(medico);
+		
+		
+		return new PreMedicoDTO(medico);
+	}
 	
 	
 	

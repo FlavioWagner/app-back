@@ -13,6 +13,12 @@ import br.com.appnovo.model.PreMedico;
 public class PreMedicoDTO {
 	
 	
+	private Long id; 
+
+
+
+
+
 	private String genero;
 	private Integer idEstado;
 	private String nacionalidade;
@@ -30,9 +36,11 @@ public class PreMedicoDTO {
 	
 	
 	
-	public PreMedicoDTO(String categoria, String genero, Integer idEstado, String nacionalidade, Date nascimento,
+	public PreMedicoDTO(Long id, String categoria, String genero, Integer idEstado, String nacionalidade, Date nascimento,
 			Boolean nascimentoExterior, String nome, String registro, String rg, Date rgExpedicao, String rgOrgao,
 			String titulo, String tituloSecao, String tituloZona, Estado estado, EstadoCivil estadoCivil) {
+		
+		this.id = id;
 		this.categoria = categoria;
 		this.genero = genero;
 		this.idEstado = idEstado;
@@ -52,6 +60,7 @@ public class PreMedicoDTO {
 	}
 
     public PreMedicoDTO(PreMedico preMedico) {
+    	this.id = preMedico.getId();
     	this.categoria = preMedico.getCategoria();
 		this.genero = preMedico.getGenero();
 		this.idEstado = preMedico.getIdEstado();
@@ -77,7 +86,13 @@ public class PreMedicoDTO {
 	public Estado estado;
 	public EstadoCivil estadoCivil; 
 	
-	
+	public Long getid() {
+		return id;
+	}
+
+	public void setid(Long idMedico) {
+		this.id = idMedico;
+	}
 	public EstadoCivil getEstadoCivil() {
 		return estadoCivil;
 	}
