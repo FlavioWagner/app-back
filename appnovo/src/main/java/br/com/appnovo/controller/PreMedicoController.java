@@ -28,12 +28,12 @@ public class PreMedicoController<T> {
 		return ResponseEntity.ok().body(lista);
 	}
 	
-	
+	@SuppressWarnings("unchecked")
 	@GetMapping(value="porId")
-	public ResponseEntity<List<PreMedicoDTO>> findByid(@RequestParam(value="idMedico",required=false) Long idMedico,
+	public ResponseEntity<T> findByid(@RequestParam(value="idMedico",required=false) Long idMedico,
 			                                          @RequestParam(value="registro",required=false) String registro){
 	List<PreMedicoDTO> lista = idMedico == null ? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
-		return ResponseEntity.ok().body(lista);
+		return (ResponseEntity<T>) ResponseEntity.ok().body(lista);
 	}
 	
 	
