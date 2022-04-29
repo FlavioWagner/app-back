@@ -1,73 +1,49 @@
 package br.com.appnovo.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.appnovo.dto.EstadoDTO;
-import br.com.appnovo.model.Estado;
-import br.com.appnovo.repository.EstadoRepository;
+import br.com.appnovo.service.EstadoService;
 
-@RestController("/estados")
+@RestController
+@RequestMapping("/estados")
 public class EstadoController implements ICustomController<EstadoDTO, Integer>{
+	
 	@Autowired
-	EstadoRepository estadoRepository;
-
+	EstadoService estadoService;
+	
 	@Override
 	public List<EstadoDTO> Listar() {
-		try {
-			return estadoRepository.findAll()
-					               .stream()
-					               .map(x -> new EstadoDTO(x))
-					               .collect(Collectors.toList());
-		} catch (Exception e) {
-			return new ArrayList<EstadoDTO>();
-		}	
+		return estadoService.Listar();
 	}
 
 	@Override
 	public EstadoDTO Item(Integer id) {
-		try {
-			return new EstadoDTO( estadoRepository.findById(id).get() );
-		} catch (Exception e) {
-			return new EstadoDTO(new Estado());
-		}	
+		return estadoService.Item(id);	
 	}
 
 	@Override
 	public EstadoDTO Inserir(EstadoDTO item) {
-		try {
-			Estado estado = new Estado();
-			estado.setNome(item.getNome());
-			estado.setSigla(item.getNome());
-			return new EstadoDTO(estadoRepository.save(estado));
-		} catch (Exception e) {
-			return null;
-		}
+		return estadoService.Inserir(item);	
 	}
 
 	@Override
 	public EstadoDTO atualizar(EstadoDTO item) {
-		Estado estado = null;
-		try {
-			estado = estadoRepository.findBySigla(item.getUf());
-			estado.setNome(item.getNome());
-			return new EstadoDTO(estadoRepository.save(estado));
-		} catch (Exception e) {
-			return null;
-		}
+		return estadoService.Atualizar(item);
 	}
 
 	@Override
 	public boolean deletar(Integer id) {
-		try {
-			estadoRepository.deleteById(id);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}		
+		return estadoService.Deletar(id);		
 	}
+	
+	@RequestMapping("/dados/sigla/{uf}")
+	public EstadoDTO Item(@PathVariable(value="uf") String uf) {
+		return estadoService.Item(uf);
+	}	
 }
