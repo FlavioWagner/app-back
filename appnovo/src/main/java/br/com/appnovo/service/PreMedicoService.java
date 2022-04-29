@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.appnovo.repository.PreMedicoRepository;
-import br.com.appnovo.service.Exceptions.ObjectNotFoundException;
 import br.com.appnovo.dto.PreMedicoDTO;
 import br.com.appnovo.model.PreMedico;
 
@@ -38,22 +37,9 @@ public class PreMedicoService {
 	}
 	
 	
-	public List<PreMedicoDTO> findById(Long idMedico){
-		Optional<PreMedico>  listaPreMedico = repositorio.findById(idMedico);
-		// Exceção
-	//	return listaPreMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" + idMedico));
-		
-	///	return new PreMedicoDTO(null)
-		
-		//return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + "Tipo: " + PreMedico.class.getName()));		
-		return listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
-	}
-	
-	
-	
-	public PreMedico findId(Long idMedico){
-		Optional<PreMedico>  preMedico = repositorio.findById(idMedico);		
-		return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + ". Tipo: " + PreMedico.class.getName()));		
+	public List<PreMedicoDTO> findById(Integer idMedico){
+		Optional<PreMedico> listaPreMedico = repositorio.findById(idMedico);
+		return null;//listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
 	}
 	
 	
