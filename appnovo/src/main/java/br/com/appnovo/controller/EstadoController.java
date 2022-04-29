@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.appnovo.controller.interfaces.ICustomController;
 import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.service.EstadoService;
 

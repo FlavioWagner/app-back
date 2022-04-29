@@ -1,4 +1,4 @@
-package br.com.appnovo.controller;
+package br.com.appnovo.controller.interfaces;
 
 import java.util.List;
 
