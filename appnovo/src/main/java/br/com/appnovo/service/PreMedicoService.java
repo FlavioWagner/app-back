@@ -38,20 +38,20 @@ public class PreMedicoService {
 	}
 	
 	
-	public List<PreMedicoDTO> findById(Long idMedico){
-		Optional<PreMedico> listaPreMedico = repositorio.findById(idMedico);
-		return listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
-	}
-	
+		
 	public PreMedico findId(Long idMedico){
 		Optional<PreMedico>  preMedico = repositorio.findById(idMedico);		
 		return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + "Tipo: " + PreMedico.class.getName()));		
 	}
 	
 	
-	public List<PreMedicoDTO> findByRegistro(String registro){
-		List<PreMedico> listaPreMedico = repositorio.findByRegistro(registro);	
-		return listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
+	public PreMedico findByRegistro(String registro){
+		Optional<PreMedico>preMedico = repositorio.findByRegistro(registro);	
+		
+		return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +registro + "Tipo: " + PreMedico.class.getName()));	
+		
+		
+		//return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + "Tipo: " + PreMedico.class.getName()));		
 		
 	}
 	

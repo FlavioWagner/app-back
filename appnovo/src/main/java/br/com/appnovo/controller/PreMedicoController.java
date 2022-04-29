@@ -34,7 +34,8 @@ public class PreMedicoController<T> {
 	@GetMapping(value="porId")
 	public ResponseEntity<T> findByid(@RequestParam(value="idMedico",required=false) Long idMedico,
 			                          @RequestParam(value="registro",required=false) String registro){
-	List<PreMedicoDTO> lista = idMedico == null ? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
+		
+	PreMedicoDTO lista = idMedico != null ? new PreMedicoDTO(preMedicoService.findId(idMedico)) : new PreMedicoDTO(preMedicoService.findByRegistro(registro));
 	
 		return (ResponseEntity<T>) ResponseEntity.ok().body(lista);
 	}
