@@ -30,16 +30,43 @@ public class PreMedicoController<T> {
 	
 	
 	@GetMapping(value="porId")
-	public ResponseEntity<List<PreMedicoDTO>> findByid(@RequestParam(value="idMedico",required=false) Integer idMedico,
+	public ResponseEntity<List<PreMedicoDTO>> findByid(@RequestParam(value="idMedico",required=false) Long idMedico,
 			                                          @RequestParam(value="registro",required=false) String registro){
 		
-		List<PreMedicoDTO> lista = idMedico == null? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
+		
+		
+	List<PreMedicoDTO> lista = idMedico == null ? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
+		
+	// PreMedicoDTO dto = new PreMedicoDTO(preMedicoService.findById(idMedico));
+		
+		
+	//	List<PreMedicoDTO> lista = idMedico == null? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
+		
 		
 		return ResponseEntity.ok().body(lista);
 	}
 	
-	@SuppressWarnings("unchecked")
-	@PostMapping(value = "/premedico")
+	
+	
+	@GetMapping(value="Id")
+	public ResponseEntity<PreMedicoDTO> findByid(@RequestParam(value="idMedico",required=false) Long idMedico)
+			                               {
+		
+		
+		
+	//List<PreMedicoDTO> lista = idMedico == null ? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
+		
+	  PreMedicoDTO dto = new PreMedicoDTO(preMedicoService.findId(idMedico));
+		
+		
+	//	List<PreMedicoDTO> lista = idMedico == null? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
+		
+		
+		return ResponseEntity.ok().body(dto);
+	}
+	
+	 @SuppressWarnings("unchecked")
+	 @PostMapping(value = "/premedico")
 	 public ResponseEntity<T> inserir(@RequestBody PreMedicoDTO dto) {
 		
 		dto = preMedicoService.Insert(dto);
@@ -50,7 +77,5 @@ public class PreMedicoController<T> {
 				.body("Sucesso");
 	}
 		
-
-	
 	
 }
