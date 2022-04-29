@@ -14,7 +14,7 @@ public class ResourceExceptionHandler {
 		
 		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), e.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
-		
+		//
 	}
 
 }
