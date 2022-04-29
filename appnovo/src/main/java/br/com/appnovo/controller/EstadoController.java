@@ -11,7 +11,7 @@ import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.model.Estado;
 import br.com.appnovo.repository.EstadoRepository;
 
-@RestController
+@RestController("/estados")
 public class EstadoController implements ICustomController<EstadoDTO, Integer>{
 	@Autowired
 	EstadoRepository estadoRepository;
