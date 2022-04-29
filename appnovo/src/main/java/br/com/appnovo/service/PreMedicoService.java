@@ -39,7 +39,7 @@ public class PreMedicoService {
 	
 	public List<PreMedicoDTO> findById(Integer idMedico){
 		Optional<PreMedico> listaPreMedico = repositorio.findById(idMedico);
-		return listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
+		return null;//listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
 	}
 	
 	
