@@ -32,37 +32,16 @@ public class PreMedicoController<T> {
 	@GetMapping(value="porId")
 	public ResponseEntity<List<PreMedicoDTO>> findByid(@RequestParam(value="idMedico",required=false) Long idMedico,
 			                                          @RequestParam(value="registro",required=false) String registro){
-		
-		
-		
 	List<PreMedicoDTO> lista = idMedico == null ? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
-		
-	// PreMedicoDTO dto = new PreMedicoDTO(preMedicoService.findById(idMedico));
-		
-		
-	//	List<PreMedicoDTO> lista = idMedico == null? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
-		
-		
 		return ResponseEntity.ok().body(lista);
 	}
 	
 	
-	
+	@SuppressWarnings("unchecked")
 	@GetMapping(value="Id")
-	public ResponseEntity<PreMedicoDTO> findByid(@RequestParam(value="idMedico",required=false) Long idMedico)
-			                               {
-		
-		
-		
-	//List<PreMedicoDTO> lista = idMedico == null ? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
-		
+	public ResponseEntity<T> findByid(@RequestParam(value="idMedico",required=false) Long idMedico){	
 	  PreMedicoDTO dto = new PreMedicoDTO(preMedicoService.findId(idMedico));
-		
-		
-	//	List<PreMedicoDTO> lista = idMedico == null? preMedicoService.findById(idMedico) : preMedicoService.findByRegistro(registro);
-		
-		
-		return ResponseEntity.ok().body(dto);
+		return (ResponseEntity<T>) ResponseEntity.ok().body(dto);
 	}
 	
 	 @SuppressWarnings("unchecked")

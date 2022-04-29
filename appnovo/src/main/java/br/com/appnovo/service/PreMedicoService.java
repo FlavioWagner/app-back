@@ -53,7 +53,7 @@ public class PreMedicoService {
 	
 	public PreMedico findId(Long idMedico){
 		Optional<PreMedico>  preMedico = repositorio.findById(idMedico);		
-		return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + "Tipo: " + PreMedico.class.getName()));		
+		return preMedico.orElseThrow(() -> new ObjectNotFoundException("Informação não encontrada! id:" +idMedico + ". Tipo: " + PreMedico.class.getName()));		
 	}
 	
 	
