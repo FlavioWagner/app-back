@@ -5,9 +5,16 @@ import br.com.appnovo.model.Colaborador;
 
 
 public class ColaboradorDTO {
+	private Long id;
 	private String nome; 
 	private String registro; 
-	
+
+	public long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}	
 	public String getNome() {
 		return nome;
 	}
