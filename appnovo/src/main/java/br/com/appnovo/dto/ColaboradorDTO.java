@@ -4,8 +4,10 @@ import br.com.appnovo.model.Colaborador;
 
 
 
-public class ColaboradorDto {
-
+public class ColaboradorDTO {
+	private String nome; 
+	private String registro; 
+	
 	public String getNome() {
 		return nome;
 	}
@@ -18,21 +20,15 @@ public class ColaboradorDto {
 	public void setRegistro(String registro) {
 		this.registro = registro;
 	}
-	public ColaboradorDto(String nome, String registro) {
+	public ColaboradorDTO(String nome, String registro) {
 		this.nome = nome;
 		this.registro = registro;
 	}
 	
-	public ColaboradorDto(Colaborador colaborador) {
+	public ColaboradorDTO(Colaborador colaborador) {
 
 		this.nome = colaborador.getNome();
 		this.registro = colaborador.getRegistro();
-	}
-	
-	
-	
-	private String nome; 
-	private String registro; 
-	
+	}	
 }
 	

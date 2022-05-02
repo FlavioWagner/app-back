@@ -3,6 +3,7 @@ package br.com.appnovo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,23 +20,23 @@ public class EstadoController implements ICustomController<EstadoDTO, Integer>{
 	EstadoService estadoService;
 	
 	@Override
-	public List<EstadoDTO> Listar() {
-		return estadoService.Listar();
+	public ResponseEntity<List<EstadoDTO>> Listar() {	
+		return ResponseEntity.ok(estadoService.Listar());
 	}
 
 	@Override
-	public EstadoDTO Item(Integer id) {
-		return estadoService.Item(id);	
+	public ResponseEntity<EstadoDTO> Item(Integer id) {
+		return ResponseEntity.ok(estadoService.Item(id));	
 	}
 
 	@Override
-	public EstadoDTO Inserir(EstadoDTO item) {
-		return estadoService.Inserir(item);	
+	public ResponseEntity<EstadoDTO> Inserir(EstadoDTO item) {
+		return ResponseEntity.ok(estadoService.Inserir(item));	
 	}
 
 	@Override
-	public EstadoDTO atualizar(EstadoDTO item) {
-		return estadoService.Atualizar(item);
+	public ResponseEntity<EstadoDTO> atualizar(EstadoDTO item) {
+		return ResponseEntity.ok(estadoService.Atualizar(item));
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class EstadoController implements ICustomController<EstadoDTO, Integer>{
 	}
 	
 	@RequestMapping("/dados/sigla/{uf}")
-	public EstadoDTO Item(@PathVariable(value="uf") String uf) {
-		return estadoService.Item(uf);
+	public ResponseEntity<EstadoDTO> Item(@PathVariable(value="uf") String uf) {
+		return ResponseEntity.ok(estadoService.Item(uf));
 	}	
 }
