@@ -44,7 +44,7 @@ public class EstadoController implements ICustomController<EstadoDTO, Integer>{
 		return estadoService.Deletar(id);		
 	}
 	
-	@RequestMapping("/dados/sigla/{uf}")
+	@RequestMapping("/sigla/{uf}")
 	public ResponseEntity<EstadoDTO> Item(@PathVariable(value="uf") String uf) {
 		return ResponseEntity.ok(estadoService.Item(uf));
 	}	

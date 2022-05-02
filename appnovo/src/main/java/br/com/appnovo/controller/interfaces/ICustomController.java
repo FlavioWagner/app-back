@@ -18,15 +18,15 @@ public interface ICustomController<T,I> {
 	@RequestMapping
 	public ResponseEntity<List<T>> Listar();
 	
-	@RequestMapping("/dados/{id}")
+	@RequestMapping("/{id}")
 	public ResponseEntity<T> Item(@PathParam(value="id") I id);	
 	
-	@PostMapping("/dados")
+	@PostMapping
 	public ResponseEntity<T> Inserir(@RequestBody T item);	
 	
-	@PutMapping("/dados")
+	@PutMapping
 	public ResponseEntity<T> atualizar(@RequestBody T item);	
 	
-	@DeleteMapping("/dados/{id}")
+	@DeleteMapping("/{id}")
 	public boolean deletar(@RequestBody I id);
 }
