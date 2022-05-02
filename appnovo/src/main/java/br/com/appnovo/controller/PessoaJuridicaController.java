@@ -8,39 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.appnovo.controller.interfaces.ICustomController;
+import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.dto.PessoaJuridicaDTO;
+import br.com.appnovo.service.EstadoService;
 import br.com.appnovo.service.PessoaJuridicaService;
 
 @RestController
 @RequestMapping("/juridica")
-public class PessoaJuridicaController implements ICustomController<PessoaJuridicaDTO, Long> {
+public class PessoaJuridicaController  extends CustomClassController<PessoaJuridicaService, EstadoDTO, Integer> {
 
 	@Autowired
 	PessoaJuridicaService pessoaJuridicaService;
+
+	@Override
+	protected PessoaJuridicaService getService() {
+		return pessoaJuridicaService;
+	}
 	
-	@Override
-	public ResponseEntity<List<PessoaJuridicaDTO>> Listar() {
-		return ResponseEntity.ok(pessoaJuridicaService.Listar());
-	}
 
-	@Override
-	public ResponseEntity<PessoaJuridicaDTO> Item(Long id) {
-		return ResponseEntity.ok(pessoaJuridicaService.Item(id));	
-	}
-
-	@Override
-	public ResponseEntity<PessoaJuridicaDTO> Inserir(PessoaJuridicaDTO item) {
-		return ResponseEntity.ok(pessoaJuridicaService.Inserir(item));	
-	}
-
-	@Override
-	public ResponseEntity<PessoaJuridicaDTO> atualizar(PessoaJuridicaDTO item) {
-		return ResponseEntity.ok(pessoaJuridicaService.Atualizar(item));
-	}
-
-	@Override
-	public boolean deletar(Long id) {
-		return pessoaJuridicaService.Deletar(id);
-	}
 
 }

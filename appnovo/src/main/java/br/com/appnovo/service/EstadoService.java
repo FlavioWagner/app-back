@@ -12,21 +12,30 @@ import br.com.appnovo.model.Estado;
 import br.com.appnovo.repository.EstadoRepository;
 
 @Service
-public class EstadoService {
+public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 	@Autowired
 	EstadoRepository estadoRepository;
-	
+
+	@Override
 	public List<EstadoDTO> Listar() {
 		try {
-			return estadoRepository.findAll()
+			System.out.println("aaaaaaaa");
+			List<EstadoDTO> lista = estadoRepository.findAll()
 					               .stream()
 					               .map(x -> new EstadoDTO(x))
 					               .collect(Collectors.toList());
+			
+			for (EstadoDTO estadoDTO : lista) {
+				System.out.println(estadoDTO.getNome());
+			}
+			
+			return lista;
 		} catch (Exception e) {
 			return new ArrayList<EstadoDTO>();
-		}	
+		}			
 	}
 	
+	@Override
 	public EstadoDTO Item(Integer id) {
 		try {
 			return new EstadoDTO( estadoRepository.findById(id).get() );
@@ -34,7 +43,8 @@ public class EstadoService {
 			return new EstadoDTO(new Estado());
 		}	
 	}
-
+	
+	@Override
 	public EstadoDTO Inserir(EstadoDTO item) {
 		try {
 			Estado estado = new Estado();
@@ -45,7 +55,8 @@ public class EstadoService {
 			return null;
 		}
 	}
-
+	
+	@Override
 	public EstadoDTO Atualizar(EstadoDTO item) {
 		Estado estado = null;
 		try {
@@ -56,7 +67,8 @@ public class EstadoService {
 			return null;
 		}
 	}
-
+	
+	@Override
 	public boolean Deletar(Integer id) {
 		try {
 			estadoRepository.deleteById(id);
@@ -73,5 +85,6 @@ public class EstadoService {
 		} catch (Exception e) {
 			return new EstadoDTO(new Estado());
 		}	
-	}		 
+	}
+	 
 }
