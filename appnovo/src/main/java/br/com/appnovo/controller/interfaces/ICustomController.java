@@ -26,7 +26,7 @@ public interface ICustomController<T,I> {
 	public ResponseEntity<T> Inserir(@RequestBody T item);	
 	
 	@PutMapping
-	public ResponseEntity<T> atualizar(@RequestBody T item);	
+	public ResponseEntity<T> Atualizar(@RequestBody T item);	
 	
 	@DeleteMapping("/{id}")
 	public boolean Deletar(@PathVariable(value="id") I id);

@@ -27,10 +27,14 @@ public class ColaboradorDTO {
 	public void setRegistro(String registro) {
 		this.registro = registro;
 	}
+	
+	public ColaboradorDTO() {
+	}		
+
 	public ColaboradorDTO(String nome, String registro) {
 		this.nome = nome;
 		this.registro = registro;
-	}
+	}	
 	
 	public ColaboradorDTO(Colaborador colaborador) {
 

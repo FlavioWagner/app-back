@@ -6,10 +6,13 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.appnovo.controller.interfaces.ICustomController;
+import br.com.appnovo.dto.ColaboradorDTO;
+import br.com.appnovo.model.Colaborador;
 
 @RestController
 public abstract class CustomClassController<S,T,I> implements ICustomController<T, I> {	
@@ -24,12 +27,13 @@ public abstract class CustomClassController<S,T,I> implements ICustomController<
 	public void setMapper(ModelMapper mapper) {
 		this.mapper = mapper;
 	}	
-	
-	
-	
-	
-	
 
+	private Colaborador fromDTO(T item)
+	{
+		return mapper.map(item, Colaborador.class);
+	}
+	
+	
 	protected abstract void LoadData();
 	
 	@SuppressWarnings({ "unchecked", "unused" })
@@ -113,12 +117,28 @@ public abstract class CustomClassController<S,T,I> implements ICustomController<
 
 	@Override
 	public ResponseEntity<T> Inserir(T item) {
-		// TODO Auto-generated method stub
-		return null;
+		LoadData();
+		/*
+		
+		Colaborador colaborador = new Colaborador();
+		ColaboradorDTO ddd = (ColaboradorDTO)item;
+		
+	    
+		T dados = (T)ddd;
+		System.out.println(ddd.getNome());
+	    
+		return ResponseEntity.ok(dados);
+		*/
+		//mapper.getConfiguration().setFieldMatchingEnabled(true);
+		//System.out.println(((ColaboradorDTO)(item)).getId());
+		//Colaborador colaborador = fromDTO(item);
+		System.out.println("ddddddddddddddddd");
+		
+		return ResponseEntity.ok(item);
 	}
 
 	@Override
-	public ResponseEntity<T> atualizar(T item) {
+	public ResponseEntity<T> Atualizar(T item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
