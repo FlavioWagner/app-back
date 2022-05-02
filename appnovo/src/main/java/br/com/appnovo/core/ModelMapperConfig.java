@@ -1,0 +1,13 @@
+package br.com.appnovo.core;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ModelMapperConfig {
+	@Bean
+	public ModelMapper modelapper() {
+		return new ModelMapper();
+	}
+}

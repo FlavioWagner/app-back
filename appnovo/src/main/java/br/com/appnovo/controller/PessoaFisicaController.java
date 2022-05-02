@@ -5,22 +5,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.appnovo.dto.EstadoDTO;
-import br.com.appnovo.service.EstadoService;
+import br.com.appnovo.dto.PessoaFisicaDTO;
+import br.com.appnovo.service.PessoaFisicaService;
 
 @RestController
-@RequestMapping("/estadocivil")
-public class EstadoCivilController extends CustomClassController<EstadoService, EstadoDTO, Integer> {
+@RequestMapping("/fisica")
+public class PessoaFisicaController extends CustomClassController<PessoaFisicaService, PessoaFisicaDTO, Long>{
+
+	@Autowired
+	PessoaFisicaService fisicaService;
 	
 	@Autowired
-	private EstadoService estadoService;	
-	
-	@Autowired
-	ModelMapper mapper;	
+	ModelMapper mapper;
 	
 	@Override
 	protected void LoadData() {
-		setService(this.estadoService);
-		setMapper(this.mapper);
+		setService(fisicaService);
+		setMapper(mapper);
 	}
+
 }

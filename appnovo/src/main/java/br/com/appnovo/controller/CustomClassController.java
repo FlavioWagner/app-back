@@ -5,15 +5,32 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.appnovo.controller.interfaces.ICustomController;
 
 @RestController
-public abstract class CustomClassController<S,T,I> implements ICustomController<T, I> {
+public abstract class CustomClassController<S,T,I> implements ICustomController<T, I> {	
 	
-	protected abstract S getService();
+	private S service;
+	private ModelMapper mapper;
+
+	public void setService(S service) {
+		this.service = service;
+	}
+	
+	public void setMapper(ModelMapper mapper) {
+		this.mapper = mapper;
+	}	
+	
+	
+	
+	
+	
+
+	protected abstract void LoadData();
 	
 	@SuppressWarnings({ "unchecked", "unused" })
 	private String getGenericName(){      	
@@ -31,8 +48,10 @@ public abstract class CustomClassController<S,T,I> implements ICustomController<
 	@Override
 	public ResponseEntity<List<T>> Listar() {			
 		
+		LoadData();
+		
 		try {
-			S service = getService();
+			//S service = getService();
 			Method method = service.getClass().getMethod("Listar");
 			Object o = method.invoke(service);
 			
@@ -61,9 +80,9 @@ public abstract class CustomClassController<S,T,I> implements ICustomController<
 	@SuppressWarnings("unchecked")
 	@Override
 	public ResponseEntity<T> Item(I id) {
-		
+		LoadData();
 		try {		
-			S service = getService();
+			//S service = getService();
 			Method method = service.getClass().getMethod("Item",Class.forName(getGenericNamePK()));	
 			Object o = method.invoke(service,id);
 			
@@ -75,7 +94,7 @@ public abstract class CustomClassController<S,T,I> implements ICustomController<
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (InvocationTargetException e) {
+		} catch (InvocationTargetException e) { 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
@@ -107,7 +126,7 @@ public abstract class CustomClassController<S,T,I> implements ICustomController<
 	@Override
 	public boolean Deletar(I id) {
 		try {
-			S service = getService();
+			//S service = getService();
 			Method method = service.getClass().getMethod("Deletar",Class.forName(getGenericNamePK()));	
 			method.invoke(service,id);
 			return true;

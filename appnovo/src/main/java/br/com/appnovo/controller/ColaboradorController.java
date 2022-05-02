@@ -1,5 +1,6 @@
 package br.com.appnovo.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +14,13 @@ public class ColaboradorController extends CustomClassController<ColaboradorServ
 
 	@Autowired
 	ColaboradorService colaboradorService;
-
+	
+	@Autowired
+	ModelMapper mapper;	
+	
 	@Override
-	protected ColaboradorService getService() {
-		return this.colaboradorService;
+	protected void LoadData() {
+		setService(this.colaboradorService);
+		setMapper(this.mapper);
 	}
 }
