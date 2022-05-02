@@ -69,7 +69,6 @@ public class EstadoService {
 	public EstadoDTO Item(String uf) {
 		
 		try {
-			System.out.println(uf);
 			return new EstadoDTO( estadoRepository.findBySigla(uf) );
 		} catch (Exception e) {
 			return new EstadoDTO(new Estado());
