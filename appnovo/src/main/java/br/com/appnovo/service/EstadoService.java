@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.model.Estado;
 import br.com.appnovo.repository.EstadoRepository;
+import br.com.appnovo.service.interfaces.ICustomService;
 
 @Service
 public class EstadoService implements ICustomService<EstadoDTO,Integer>{
@@ -19,16 +20,10 @@ public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 	@Override
 	public List<EstadoDTO> Listar() {
 		try {
-			System.out.println("aaaaaaaa");
 			List<EstadoDTO> lista = estadoRepository.findAll()
 					               .stream()
 					               .map(x -> new EstadoDTO(x))
 					               .collect(Collectors.toList());
-			
-			for (EstadoDTO estadoDTO : lista) {
-				System.out.println(estadoDTO.getNome());
-			}
-			
 			return lista;
 		} catch (Exception e) {
 			return new ArrayList<EstadoDTO>();
@@ -39,6 +34,7 @@ public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 	public EstadoDTO Item(Integer id) {
 		try {
 			return new EstadoDTO( estadoRepository.findById(id).get() );
+			
 		} catch (Exception e) {
 			return new EstadoDTO(new Estado());
 		}	

@@ -6,6 +6,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public interface ICustomController<T,I> {
 	public ResponseEntity<List<T>> Listar();
 	
 	@RequestMapping("/{id}")
-	public ResponseEntity<T> Item(@PathParam(value="id") I id);	
+	public ResponseEntity<T> Item(@PathVariable(value="id") I id);	
 	
 	@PostMapping
 	public ResponseEntity<T> Inserir(@RequestBody T item);	
@@ -28,5 +29,5 @@ public interface ICustomController<T,I> {
 	public ResponseEntity<T> atualizar(@RequestBody T item);	
 	
 	@DeleteMapping("/{id}")
-	public boolean deletar(@RequestBody I id);
+	public boolean Deletar(@PathVariable(value="id") I id);
 }

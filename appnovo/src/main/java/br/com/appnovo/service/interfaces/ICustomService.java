@@ -1,4 +1,4 @@
-package br.com.appnovo.service;
+package br.com.appnovo.service.interfaces;
 
 import java.util.List;
 

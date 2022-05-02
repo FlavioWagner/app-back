@@ -12,9 +12,7 @@ import br.com.appnovo.service.EstadoService;
 public class EstadoCivilController extends CustomClassController<EstadoService, EstadoDTO, Integer> {
 	
 	@Autowired
-	private EstadoService estadoService;
-
-	
+	private EstadoService estadoService;	
 	
 	protected EstadoService getService() {
 		return this.estadoService;
