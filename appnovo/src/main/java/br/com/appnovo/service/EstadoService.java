@@ -1,23 +1,21 @@
 package br.com.appnovo.service;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import antlr.collections.List;
 import br.com.appnovo.dto.EstadoDTO;
 import br.com.appnovo.model.Estado;
 import br.com.appnovo.repository.EstadoRepository;
-import br.com.appnovo.service.interfaces.ICustomService;
 
 @Service
-public class EstadoService implements ICustomService<EstadoDTO,Integer>{
+public class EstadoService{
 	@Autowired
 	EstadoRepository estadoRepository;
 
-	@Override
 	public List<EstadoDTO> Listar() {
 		try {
 			List<EstadoDTO> lista = estadoRepository.findAll()
@@ -30,7 +28,6 @@ public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 		}			
 	}
 	
-	@Override
 	public EstadoDTO Item(Integer id) {
 		try {
 			return new EstadoDTO( estadoRepository.findById(id).get() );
@@ -40,7 +37,6 @@ public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 		}	
 	}
 	
-	@Override
 	public EstadoDTO Inserir(EstadoDTO item) {
 		try {
 			Estado estado = new Estado();
@@ -52,7 +48,6 @@ public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 		}
 	}
 	
-	@Override
 	public EstadoDTO Atualizar(EstadoDTO item) {
 		Estado estado = null;
 		try {
@@ -64,7 +59,6 @@ public class EstadoService implements ICustomService<EstadoDTO,Integer>{
 		}
 	}
 	
-	@Override
 	public boolean Deletar(Integer id) {
 		try {
 			estadoRepository.deleteById(id);
