@@ -1,5 +1,7 @@
 package br.com.appnovo.service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,7 @@ public class PreMedicoService{
 	
 
 	public PreMedicoDTO Inserir(PreMedicoDTO dto) {	
-		PreMedico medico = new PreMedico(dto.getCategoria(), dto.getGenero(), dto.getIdEstado(), dto.getNacionalidade(), dto.getNascimento(),
-			                            dto.getNascimentoExterior(), dto.getNome(), dto.getRegistro(), dto.getRg(), dto.getRgExpedicao(), dto.getRgOrgao(),
-				                        dto.getTitulo(), dto.getTituloSecao(), dto.getTituloZona(), dto.getEstado(), dto.getEstadoCivil());
-	
+		PreMedico medico = new PreMedico();
 		repositorio.save(medico);
 		return new PreMedicoDTO(medico);
 	}

@@ -13,10 +13,32 @@ import java.util.Date;
 @Table(name="pre_medico")
 @NamedQuery(name="PreMedico.findAll", query="SELECT p FROM PreMedico p")
 public class PreMedico implements Serializable {
+	public PreMedico(Long id, String categoria, String genero, Integer idEstado, String nacionalidade, Date nascimento,
+			Boolean nascimentoExterior, String nome, String registro, String rg, Date rgExpedicao, String rgOrgao,
+			String titulo, String tituloSecao, String tituloZona, Estado estado, EstadoCivil estadoCivil) {
+		super();
+		this.id = id;
+		this.categoria = categoria;
+		this.genero = genero;
+		this.idEstado = idEstado;
+		this.nacionalidade = nacionalidade;
+		this.nascimento = nascimento;
+		this.nascimentoExterior = nascimentoExterior;
+		this.nome = nome;
+		this.registro = registro;
+		this.rg = rg;
+		this.rgExpedicao = rgExpedicao;
+		this.rgOrgao = rgOrgao;
+		this.titulo = titulo;
+		this.tituloSecao = tituloSecao;
+		this.tituloZona = tituloZona;
+		this.estado = estado;
+		this.estadoCivil = estadoCivil;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	private String categoria;
@@ -67,33 +89,6 @@ public class PreMedico implements Serializable {
 
 	public PreMedico() {
 	}
-	
-	
-	
-
-	public PreMedico(String categoria, String genero, Integer idEstado, String nacionalidade, Date nascimento,
-			Boolean nascimentoExterior, String nome, String registro, String rg, Date rgExpedicao, String rgOrgao,
-			String titulo, String tituloSecao, String tituloZona, Estado estado, EstadoCivil estadoCivil) {
-		this.categoria = categoria;
-		this.genero = genero;
-		this.idEstado = idEstado;
-		this.nacionalidade = nacionalidade;
-		this.nascimento = nascimento;
-		this.nascimentoExterior = nascimentoExterior;
-		this.nome = nome;
-		this.registro = registro;
-		this.rg = rg;
-		this.rgExpedicao = rgExpedicao;
-		this.rgOrgao = rgOrgao;
-		this.titulo = titulo;
-		this.tituloSecao = tituloSecao;
-		this.tituloZona = tituloZona;
-		this.estado = estado;
-		this.estadoCivil = estadoCivil;
-	}
-
-
-
 
 	public Long getId() {
 		return this.id;
