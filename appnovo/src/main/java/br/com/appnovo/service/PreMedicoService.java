@@ -1,5 +1,6 @@
 package br.com.appnovo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,7 +24,13 @@ public class PreMedicoService{
 	public List<PreMedicoDTO> Listar(){
 		
 		List<PreMedico> listaPreMedico = repositorio.findAll();	
+		if (listaPreMedico != null){
 		return listaPreMedico.stream().map(x -> new PreMedicoDTO(x)).collect(Collectors.toList());
+		}
+		else {
+			return new ArrayList<PreMedicoDTO>();
+		}
+			
 	}
 	
 

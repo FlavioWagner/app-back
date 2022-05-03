@@ -25,7 +25,7 @@ public class ColaboradorController{
 	@RequestMapping
 	public ResponseEntity<List<ColaboradorDTO>> Listar()
 	{
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.ok( colaboradorService.Listar());
 	}
 	
 	@RequestMapping("/{id}")

@@ -1,5 +1,6 @@
 package br.com.appnovo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class PreMedicoController{
 	@RequestMapping
 	public ResponseEntity<List<PreMedicoDTO>> Listar()
 	{
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.ok(preMedicoService.Listar());
 	}
 	
 	@RequestMapping("/{id}")

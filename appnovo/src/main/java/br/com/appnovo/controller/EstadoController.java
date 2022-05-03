@@ -25,7 +25,7 @@ public class EstadoController{
 	@RequestMapping
 	public ResponseEntity<List<EstadoDTO>> Listar()
 	{
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.ok( estadoService.Listar());
 	}
 	
 	@RequestMapping("/{id}")
@@ -50,5 +50,11 @@ public class EstadoController{
 	public boolean Deletar(@PathVariable(value="id") Integer id)
 	{
 		return false;
-	}
+	}	
+	
+	@RequestMapping("/sigla/{uf}")
+	public ResponseEntity<EstadoDTO> Item(@PathVariable(value="uf") String uf)
+	{
+		return ResponseEntity.ok( estadoService.Item(uf));
+	}	
 }
